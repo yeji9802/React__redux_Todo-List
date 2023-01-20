@@ -20,7 +20,7 @@ const Container = styled.section`
 `;
 
 const Title = styled.h1`
-  margin: 0 0 0 1rem;
+  margin: 0 0 1rem 0;
   color: #021b79;
 `;
 
@@ -30,6 +30,6 @@ const Count = styled.mark`
 `;
 
 const TodoCount = styled.h3`
-  margin: 2rem 0 2rem 1rem;
+  margin: 0;
   color: #575757;
 `;
