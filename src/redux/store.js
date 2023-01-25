@@ -10,12 +10,14 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD:
       return {
+        ...state,
         todos: [...state.todos, action.todo],
       };
       break;
     case DELETE:
       return {
-        todos: [...state.todos.filter((todo) => todo.id !== action.id)],
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== action.id),
       };
       break;
     case "todoAllDelete":

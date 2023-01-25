@@ -9,7 +9,7 @@ const TodoList = () => {
   return (
     <section>
       <List>
-        {toods.map((todo, idx) => (
+        {toods.map((todo) => (
           <TodoListItem key={todo.id} todo={todo} />
         ))}
       </List>

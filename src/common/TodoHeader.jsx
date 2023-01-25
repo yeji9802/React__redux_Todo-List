@@ -1,12 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector } from 'react-redux';
 
 const TodoHeader = () => {
+  const toods = useSelector((state) => state.todos);
+  const count = toods.filter((todo) => !todo.isCompleted).length;
+
+
   return (
     <Container>
       <Title>TODO LIST</Title>
       <TodoCount>
-        <Count>0</Count>개의 할 일
+        <Count>{count}</Count>개의 할 일
       </TodoCount>
     </Container>
   );
