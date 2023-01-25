@@ -9,8 +9,10 @@ const TodoInput = () => {
   const [text, setText] = useState("");
 
   const handleSubmit = (e) => {
+    // 새로고침 방지
     e.preventDefault();
 
+    // 공란 방지
     if (!text) return;
 
     const todo = {
@@ -19,6 +21,8 @@ const TodoInput = () => {
     };
 
     dispatch(todo_add(todo));
+    
+    // 추가 후 값 초기화
     setText("");
     console.log(todo);
   };

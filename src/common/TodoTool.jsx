@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 
 const TodoTool = () => {
+  const dispatch = useDispatch();
+
   return (
     <Container>
       <div>
         <Button>전체 완료</Button>
         <Line>|</Line>
-        <Button>전체 삭제</Button>
+        <Button onClick={() => dispatch({ type: "todoAllDelete" })}>
+          전체 삭제
+        </Button>
       </div>
       <div>
         <Button>전체</Button>

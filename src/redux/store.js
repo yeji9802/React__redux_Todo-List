@@ -1,5 +1,5 @@
 import { createStore } from "redux";
-import { ADD, DELETE } from "./types";
+import { ADD, DELETE, AllDELETE } from "./types";
 
 // 초기 상태
 const initialState = {
@@ -16,6 +16,11 @@ const reducer = (state = initialState, action) => {
     case DELETE:
       return {
         todos: [...state.todos.filter((todo) => todo.id !== action.id)],
+      };
+      break;
+    case "todoAllDelete":
+      return {
+        todos: [],
       };
       break;
 
