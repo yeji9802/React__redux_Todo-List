@@ -2,9 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import { MdCheckBox } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { todo_delete } from "../redux/action";
 
 const TodoListItem = (props) => {
   const { todo } = props;
+
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(todo_delete(todo.id));
+  };
 
   return (
     <Item>
@@ -16,7 +24,7 @@ const TodoListItem = (props) => {
       <TodoText>{todo.title}</TodoText>
       <ButtonArea>
         <Button>수정</Button>
-        <Button>삭제</Button>
+        <Button onClick={handleDelete}>삭제</Button>
       </ButtonArea>
     </Item>
   );
