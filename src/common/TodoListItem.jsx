@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import { MdCheckBox } from "react-icons/md";
 
-const TodoListItem = () => {
-  const [checked, setChecked] = useState(false);
+const TodoListItem = (props) => {
+  const { todo } = props;
 
   return (
     <Item>
-      {checked ? (
+      {todo.isCompleted ? (
         <MdCheckBox className="check" />
       ) : (
         <MdCheckBoxOutlineBlank className="check" />
       )}
-      <TodoText>할 일 추가</TodoText>
+      <TodoText>{todo.title}</TodoText>
       <ButtonArea>
         <Button>수정</Button>
         <Button>삭제</Button>
