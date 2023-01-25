@@ -1,19 +1,19 @@
-import Divider from "./common/Divider";
+import { Provider } from "react-redux";
 import TodoHeader from "./common/TodoHeader";
 import TodoInput from "./common/TodoInput";
 import TodoList from "./common/TodoList";
 import TodoTool from "./common/TodoTool";
+import { store } from './redux/store';
 
 function App() {
 
   return (
-    <div>
+    <Provider store={store}>
       <TodoHeader />
       <TodoInput />
       <TodoTool />
-      <Divider />
       <TodoList />
-    </div>
+    </Provider>
   );
 }
 

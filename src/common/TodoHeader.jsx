@@ -16,7 +16,7 @@ export default TodoHeader;
 
 const Container = styled.section`
   width: 50rem;
-  margin: 2rem auto;
+  margin: 2em auto;
 `;
 
 const Title = styled.h1`

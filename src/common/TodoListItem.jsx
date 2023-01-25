@@ -27,12 +27,18 @@ const Item = styled.li`
   display: flex;
   align-items: center;
   padding: 1rem;
+  border-bottom: 1px solid #e8e8e8;
 
   .check {
     margin-top: 0.1rem;
     font-size: 1.2rem;
-  } 
-  
+    cursor: pointer;
+  }
+
+  &:last-child {
+    border: none;
+  }
+
   &:hover {
     background-color: #f5f5f5;
     transition: background-color 0s;
@@ -49,7 +55,6 @@ const TodoText = styled.span`
 
 const ButtonArea = styled.div`
   visibility: hidden;
-
   margin-left: auto;
 `;
 

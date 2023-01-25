@@ -1,12 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { todo_add } from "./../redux/action";
 
 const TodoInput = () => {
+  const dispatch = useDispatch();
+
+  const [text, setText] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!text) return;
+
+    const todo = {
+      title: text,
+      isCompleted: false,
+    };
+
+    dispatch(todo_add(todo));
+    setText("");
+    console.log(todo);
+  };
+  
+  const handleText = (e) => {
+    setText(e.target.value);
+  };
+
   return (
     <Container>
-      <FormContainer>
-        <Input type="text" />
-        <Button>추가</Button>
+      <FormContainer onSubmit={handleSubmit}>
+        <Input type="text" onChange={handleText} value={text} />
+        <Button type="submit">추가</Button>
       </FormContainer>
     </Container>
   );
@@ -16,7 +41,7 @@ export default TodoInput;
 
 const Container = styled.section`
   display: flex;
-  margin: 2rem auto;
+  margin: 1rem auto;
   width: 50rem;
 `;
 
@@ -28,7 +53,7 @@ const FormContainer = styled.form`
 const Input = styled.input`
   flex: 1;
   padding: 0.5rem;
-  font-size: 20px;
+  font-size: 15px;
   border: 1px solid #021b79;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;

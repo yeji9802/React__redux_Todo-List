@@ -6,14 +6,14 @@ const TodoTool = () => {
     <Container>
       <div>
         <Button>전체 완료</Button>
-        <span>|</span>
+        <Line>|</Line>
         <Button>전체 삭제</Button>
       </div>
       <div>
         <Button>전체</Button>
-        <span>|</span>
+        <Line>|</Line>
         <Button>진행</Button>
-        <span>|</span>
+        <Line>|</Line>
         <Button>완료</Button>
       </div>
     </Container>
@@ -25,7 +25,7 @@ export default TodoTool;
 const Container = styled.section`
   display: flex;
   justify-content: space-between;
-  margin: 2rem auto;
+  margin: 1rem auto;
   width: 50rem;
 `;
 
@@ -39,4 +39,8 @@ const Button = styled.button`
     color: #021b79;
     font-weight: bold;
   }
+`;
+
+const Line = styled.span`
+  color: #c0c0c0;
 `;
