@@ -1,25 +1,60 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { ALLDELETE } from "./../redux/todo/types";
+import { todo_allCompleted, todo_allIncomplete } from "../redux/todo/action";
+import { changeFilter } from "./../redux/filter/action";
 
 const TodoTool = () => {
+  const todos = useSelector((state) => state.todo.todos);
+  const filter = useSelector((state) => state.filter.filter);
+
   const dispatch = useDispatch();
 
+  const handleClickCompleted = () => {
+    dispatch(todo_allCompleted());
+  };
+
+  const handleClickIncomplete = () => {
+    dispatch(todo_allIncomplete());
+  };
+
+  const todoIncomplete = todos.every((todo) => todo.isCompleted);
+
+  const handleAllFilter = () => {
+    dispatch(changeFilter("전체"));
+  };
+  const handleProgress = () => {
+    dispatch(changeFilter("진행"));
+  };
+  const handleCompleted = () => {
+    dispatch(changeFilter("완료"));
+  };
+
+  console.log(filter);
   return (
     <Container>
       <div>
-        <Button>전체 완료</Button>
+        {todoIncomplete ? (
+          <Button onClick={handleClickIncomplete}>전체 해제</Button>
+        ) : (
+          <Button onClick={handleClickCompleted}>전체 완료</Button>
+        )}
         <Line>|</Line>
-        <Button onClick={() => dispatch({ type: "todoAllDelete" })}>
-          전체 삭제
-        </Button>
+        <Button onClick={() => dispatch({ type: ALLDELETE })}>전체 삭제</Button>
       </div>
       <div>
-        <Button>전체</Button>
+        <Button
+          onClick={handleAllFilter}
+          className={filter === "전체" ? "" : ""}
+        >
+          전체
+        </Button>
         <Line>|</Line>
-        <Button>진행</Button>
+        <Button onClick={handleProgress}>진행</Button>
         <Line>|</Line>
-        <Button>완료</Button>
+        <Button onClick={handleCompleted}>완료</Button>
       </div>
     </Container>
   );
@@ -36,12 +71,22 @@ const Container = styled.section`
 
 const Button = styled.button`
   border: 0;
-  color: #575757;
-  background-color: inherit;
   cursor: pointer;
+  background-color: inherit;
 
   &:hover {
     color: #021b79;
+    font-weight: bold;
+  }
+
+  .common {
+    color: #575757;
+  }
+
+  .select {
+    background-color: red;
+
+    color: red;
     font-weight: bold;
   }
 `;

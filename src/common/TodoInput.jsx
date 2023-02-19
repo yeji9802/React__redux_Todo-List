@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { todo_add } from "./../redux/action";
+import { todo_add } from "./../redux/todo/action";
 
 const TodoInput = () => {
   const dispatch = useDispatch();
@@ -21,20 +21,20 @@ const TodoInput = () => {
     };
 
     dispatch(todo_add(todo));
-    
+
     // 추가 후 값 초기화
     setText("");
     console.log(todo);
   };
-  
-  const handleText = (e) => {
+
+  const handleChangeText = (e) => {
     setText(e.target.value);
   };
 
   return (
     <Container>
       <FormContainer onSubmit={handleSubmit}>
-        <Input type="text" onChange={handleText} value={text} />
+        <Input type="text" onChange={handleChangeText} value={text} />
         <Button type="submit">추가</Button>
       </FormContainer>
     </Container>

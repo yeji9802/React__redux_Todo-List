@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 const TodoHeader = () => {
-  const toods = useSelector((state) => state.todos);
+  const toods = useSelector((state) => state.todo.todos);
   const count = toods.filter((todo) => !todo.isCompleted).length;
-
 
   return (
     <Container>
